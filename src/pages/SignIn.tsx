@@ -11,6 +11,7 @@ export default function SignIn({ onSignInSuccess, onSwitchToSignUp }: SignInProp
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { signIn } = useAuth();
 
   const handleSignIn = async (e: React.FormEvent) => {
@@ -62,16 +63,26 @@ export default function SignIn({ onSignInSuccess, onSwitchToSignUp }: SignInProp
 
             <div className="text-left space-y-2">
               <label htmlFor="signin-password" className="block">&gt; PASSWORD:</label>
-              <input
-                id="signin-password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-black border border-yellow-400 p-2 text-yellow-400 focus:outline-none focus:border-white"
-                required
-                disabled={isLoading}
-                autoComplete="current-password"
-              />
+              <div className="relative">
+                <input
+                  id="signin-password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full bg-black border border-yellow-400 p-2 pr-16 text-yellow-400 focus:outline-none focus:border-white"
+                  required
+                  disabled={isLoading}
+                  autoComplete="current-password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-yellow-400 hover:text-white"
+                  disabled={isLoading}
+                >
+                  {showPassword ? '●' : '○'}
+                </button>
+              </div>
             </div>
 
             <button

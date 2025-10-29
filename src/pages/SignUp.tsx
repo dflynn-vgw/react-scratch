@@ -12,6 +12,8 @@ export default function SignUp({ onSignUpSuccess, onSwitchToSignIn }: SignUpProp
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { signUp, signUpWithProvider } = useAuth();
 
   const handleEmailSignUp = async (e: React.FormEvent) => {
@@ -98,28 +100,48 @@ export default function SignUp({ onSignUpSuccess, onSwitchToSignIn }: SignUpProp
 
             <div className="text-left space-y-2">
               <label htmlFor="signup-password" className="block">&gt; PASSWORD:</label>
-              <input
-                id="signup-password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-black border border-yellow-400 p-2 text-yellow-400 focus:outline-none focus:border-white"
-                required
-                disabled={isLoading}
-              />
+              <div className="relative">
+                <input
+                  id="signup-password"
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full bg-black border border-yellow-400 p-2 pr-16 text-yellow-400 focus:outline-none focus:border-white"
+                  required
+                  disabled={isLoading}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-yellow-400 hover:text-white"
+                  disabled={isLoading}
+                >
+                  {showPassword ? '●' : '○'}
+                </button>
+              </div>
             </div>
 
             <div className="text-left space-y-2">
               <label htmlFor="signup-confirm-password" className="block">&gt; CONFIRM PASSWORD:</label>
-              <input
-                id="signup-confirm-password"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full bg-black border border-yellow-400 p-2 text-yellow-400 focus:outline-none focus:border-white"
-                required
-                disabled={isLoading}
-              />
+              <div className="relative">
+                <input
+                  id="signup-confirm-password"
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="w-full bg-black border border-yellow-400 p-2 pr-16 text-yellow-400 focus:outline-none focus:border-white"
+                  required
+                  disabled={isLoading}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-yellow-400 hover:text-white"
+                  disabled={isLoading}
+                >
+                  {showConfirmPassword ? '●' : '○'}
+                </button>
+              </div>
             </div>
 
             <button
