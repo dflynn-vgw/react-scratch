@@ -1,4 +1,4 @@
-# React + TypeScript + Vite
+# My React App: Simulating Authentication Flows for Email, Google, Facebook & Apple Providers
 
 A modern React project setup with TypeScript, Vite, Vitest, Tailwind CSS, ESLint, and Prettier.
 
@@ -63,7 +63,7 @@ This app includes a **simulated authentication flow** with no backend required. 
 - **Multiple Sign-Up Options**
   - Email & Password with validation
   - Social authentication (Facebook, Google, Apple) - simulated
-  
+
 - **Email Verification**
   - Email sign-ups require verification before sign-in
   - Simulated verification process with animated UI
@@ -99,6 +99,23 @@ This app includes a **simulated authentication flow** with no backend required. 
 4. **Accept Terms** → First-time sign-in requires accepting T&Cs
 5. **Welcome** → Access authenticated area with user info
 
+### Screenshots
+
+#### Sign Up Page
+![Sign Up](docs/screenshots/signup.png)
+
+#### Email Verification
+![Email Verification](docs/screenshots/email-verification.png)
+
+#### Sign In Page
+![Sign In](docs/screenshots/signin.png)
+
+#### Terms & Conditions
+![Terms and Conditions](docs/screenshots/terms.png)
+
+#### Welcome Page
+![Welcome](docs/screenshots/welcome.png)
+
 ### Testing
 
 The authentication flow includes **21 comprehensive tests** covering:
@@ -120,73 +137,3 @@ The app uses the following localStorage keys:
 - `auth_users` - Stores all registered users and their hashed passwords
 - `auth_current_user` - Current authenticated user session
 - `auth_pending_verification` - Email addresses awaiting verification
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
