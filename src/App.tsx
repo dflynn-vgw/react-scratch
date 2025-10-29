@@ -5,33 +5,36 @@ type Page = 'home' | 'content' | 'about';
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
 
+  const getButtonClass = (page: string) => {
+    const base = 'px-2 transition-colors';
+    const active = 'bg-yellow-400 text-black';
+    const inactive = 'hover:bg-yellow-400 hover:text-black';
+
+    return `${base} ${currentPage === page ? active : inactive}`;
+  };
+
   const renderContent = () => {
     switch (currentPage) {
       case 'home':
         return (
-          <div className="space-y-4">
-            <pre className="text-yellow-400 text-xl">
-{`
- ░██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗
- ░██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝
- ░╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░
- ░░████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░
- ░░╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗
- ░░░╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝
-`}
+          <div className="space-y-4 text-left">
+            <pre className="text-yellow-400">
+              {`  ┌─────────────────────────────────────┐
+  │  WELCOME                            │
+  └─────────────────────────────────────┘`}
             </pre>
-            <p className="text-yellow-400">
-              &gt; System initialized...
-              <br />
-              &gt; Ready for input_
-            </p>
+            <div className="text-yellow-400 space-y-2">
+              <p>&gt; System initialized...</p>
+              <p>&gt; Ready for input</p>
+              <p className="mt-4">&gt; _</p>
+            </div>
           </div>
         );
       case 'content':
         return (
           <div className="space-y-4 text-left">
             <pre className="text-yellow-400">
-{`┌─────────────────────────────────────┐
+              {`┌─────────────────────────────────────┐
 │  CONTENT DIRECTORY                  │
 └─────────────────────────────────────┘`}
             </pre>
@@ -47,7 +50,7 @@ function App() {
         return (
           <div className="space-y-4 text-left">
             <pre className="text-yellow-400">
-{`┌─────────────────────────────────────┐
+              {`┌─────────────────────────────────────┐
 │  SYSTEM INFO                        │
 └─────────────────────────────────────┘`}
             </pre>
@@ -67,29 +70,24 @@ function App() {
       {/* Top Nav */}
       <nav className="border-b-2 border-yellow-400 p-4">
         <div className="max-w-2xl mx-auto">
-          <pre className="text-center">
-{`╔═══════════════════════════════════════╗
-║   [ ${currentPage === 'home' ? '▓' : '░'}HOME${currentPage === 'home' ? '▓' : '░'}  |  ${currentPage === 'content' ? '▓' : '░'}CONTENT${currentPage === 'content' ? '▓' : '░'}  |  ${currentPage === 'about' ? '▓' : '░'}ABOUT${currentPage === 'about' ? '▓' : '░'} ]   ║
-╚═══════════════════════════════════════╝`}
-          </pre>
           <div className="flex justify-center gap-8 mt-2">
             <button
               onClick={() => setCurrentPage('home')}
-              className="hover:bg-yellow-400 hover:text-black px-2 transition-colors"
+              className={getButtonClass('home')}
             >
               HOME
             </button>
             <span>|</span>
             <button
               onClick={() => setCurrentPage('content')}
-              className="hover:bg-yellow-400 hover:text-black px-2 transition-colors"
+              className={getButtonClass('content')}
             >
               CONTENT
             </button>
             <span>|</span>
             <button
               onClick={() => setCurrentPage('about')}
-              className="hover:bg-yellow-400 hover:text-black px-2 transition-colors"
+              className={getButtonClass('about')}
             >
               ABOUT
             </button>
@@ -106,7 +104,7 @@ function App() {
       <footer className="border-t-2 border-yellow-400 p-4">
         <div className="max-w-2xl mx-auto text-center">
           <pre>
-{`╔═══════════════════════════════════════╗
+            {`╔═══════════════════════════════════════╗
 ║  [ESC] Exit  [F1] Help  [←→] Navigate ║
 ╚═══════════════════════════════════════╝`}
           </pre>
