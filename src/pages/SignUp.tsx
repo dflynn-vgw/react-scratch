@@ -92,6 +92,7 @@ export default function SignUp({ onSignUpSuccess, onSwitchToSignIn }: SignUpProp
                 className="w-full bg-black border border-yellow-400 p-2 text-yellow-400 focus:outline-none focus:border-white"
                 required
                 disabled={isLoading}
+                autoFocus
               />
             </div>
 

@@ -56,6 +56,7 @@ export default function SignIn({ onSignInSuccess, onSwitchToSignUp }: SignInProp
                 required
                 disabled={isLoading}
                 autoComplete="email"
+                autoFocus
               />
             </div>
 
