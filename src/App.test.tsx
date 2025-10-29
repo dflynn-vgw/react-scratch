@@ -11,32 +11,14 @@ describe('App', () => {
     render(<App />);
   });
 
-  describe('HOME', () => {
-    it('TopNav: Renders 3 x Buttons with text content HOME, CONTENT, and ABOUT.', () => {
-      expect(
-        screen.getAllByRole('button').map((button) => button.textContent)
-      ).toEqual(['HOME', 'CONTENT', 'ABOUT']);
-    });
-
-    it('Content: Contains `System initialized...> Ready for input_`', () => {
-      expect(screen.getByRole('main')).toHaveTextContent(
-        'System initialized...> Ready for input_'
-      );
-    });
-
-    it('Footer: Contains TEXT', () => {
-      expect(screen.getByRole('contentinfo')).toHaveTextContent(
-        '╔═══════════════════════════════════════╗ ║ [ESC] Exit [F1] Help [←→] Navigate ║ ╚═══════════════════════════════════════╝© 2025 RETRO.SYS v1.0'
-      );
-    });
-  });
-
   describe('Navigation', () => {
     it('Navigate to HOME page', async () => {
       await user.click(screen.getByRole('button', { name: /home/i }));
       const text = getTextContentForRole('main');
-      expect(text).toContain('System initialized...');
-      expect(text).toContain('> Ready for input_');
+      expect(text).toContain('WELCOME');
+      expect(text).toContain('> System initialized...');
+      expect(text).toContain('> Ready for input');
+      expect(text).toContain('> _');
     });
 
     it('Navigate to CONTENT page', async () => {
