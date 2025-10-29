@@ -83,8 +83,9 @@ export default function SignUp({ onSignUpSuccess, onSwitchToSignIn }: SignUpProp
           {/* Email Sign Up Form */}
           <form onSubmit={handleEmailSignUp} className="space-y-4">
             <div className="text-left space-y-2">
-              <label className="block">&gt; EMAIL:</label>
+              <label htmlFor="signup-email" className="block">&gt; EMAIL:</label>
               <input
+                id="signup-email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -95,8 +96,9 @@ export default function SignUp({ onSignUpSuccess, onSwitchToSignIn }: SignUpProp
             </div>
 
             <div className="text-left space-y-2">
-              <label className="block">&gt; PASSWORD:</label>
+              <label htmlFor="signup-password" className="block">&gt; PASSWORD:</label>
               <input
+                id="signup-password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -107,8 +109,9 @@ export default function SignUp({ onSignUpSuccess, onSwitchToSignIn }: SignUpProp
             </div>
 
             <div className="text-left space-y-2">
-              <label className="block">&gt; CONFIRM PASSWORD:</label>
+              <label htmlFor="signup-confirm-password" className="block">&gt; CONFIRM PASSWORD:</label>
               <input
+                id="signup-confirm-password"
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}

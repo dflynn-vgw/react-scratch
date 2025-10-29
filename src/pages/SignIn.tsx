@@ -46,8 +46,9 @@ export default function SignIn({ onSignInSuccess, onSwitchToSignUp }: SignInProp
 
           <form onSubmit={handleSignIn} className="space-y-4">
             <div className="text-left space-y-2">
-              <label className="block">&gt; EMAIL:</label>
+              <label htmlFor="signin-email" className="block">&gt; EMAIL:</label>
               <input
+                id="signin-email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -59,8 +60,9 @@ export default function SignIn({ onSignInSuccess, onSwitchToSignUp }: SignInProp
             </div>
 
             <div className="text-left space-y-2">
-              <label className="block">&gt; PASSWORD:</label>
+              <label htmlFor="signin-password" className="block">&gt; PASSWORD:</label>
               <input
+                id="signin-password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
