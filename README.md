@@ -1,6 +1,50 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React project setup with TypeScript, Vite, Vitest, Tailwind CSS, ESLint, and Prettier.
+
+## Tech Stack
+
+- **React 19** + **TypeScript** - Modern React with type safety
+- **Vite** - Fast build tool and dev server
+- **Vitest** - Unit testing framework (Vite-native)
+- **React Testing Library** - Component testing utilities
+- **Tailwind CSS v4** - Utility-first CSS framework
+- **ESLint** + **Prettier** - Code quality and formatting
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Run tests
+npm test
+
+# Run tests with UI
+npm run test:ui
+
+# Build for production
+npm run build
+
+# Lint code
+npm run lint
+
+# Format code
+npm run format
+```
+
+## Project Structure
+
+```
+src/
+  ├── App.tsx           # Main app component
+  ├── App.test.tsx      # Example test file
+  ├── setupTests.ts     # Test setup (jest-dom)
+  └── index.css         # Tailwind imports
+```
 
 Currently, two official plugins are available:
 
