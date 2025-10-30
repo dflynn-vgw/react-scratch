@@ -101,20 +101,11 @@ This app includes a **simulated authentication flow** with no backend required. 
 
 ### Screenshots
 
-#### Sign Up Page
-![Sign Up](docs/screenshots/signup.png)
+#### Sign Up with Email
+![Sign Up with Email](docs/screenshots/signup-email.svg)
 
-#### Email Verification
-![Email Verification](docs/screenshots/email-verification.png)
-
-#### Sign In Page
-![Sign In](docs/screenshots/signin.png)
-
-#### Terms & Conditions
-![Terms and Conditions](docs/screenshots/terms.png)
-
-#### Welcome Page
-![Welcome](docs/screenshots/welcome.png)
+#### Sign Up with Authentication Provider (Facebook, Google, Apple)
+![Sign Up with Google](docs/screenshots/signup-google.svg)
 
 ### Testing
 
