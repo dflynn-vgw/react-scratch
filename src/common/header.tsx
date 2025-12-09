@@ -1,5 +1,6 @@
 import './header.css';
 import { useLocation } from 'react-router';
+import Logo from './logo';
 
 export default function Header(props: {
   links?: Array<{ text: string; url: string }>;
@@ -20,6 +21,9 @@ export default function Header(props: {
           })}
         </ul>
       </nav>
+      <span className="logo">
+        <Logo version={__GIT_HASH__} />
+      </span>
     </header>
   );
 }
