@@ -21,6 +21,11 @@ header {
       &:not(:last-child)::after {
         content: ' | ';
       }
+      &.active a {
+        background-color: black;
+        color: white;
+        padding: 0.25rem 0.5rem;
+      }
     }
   }
 }
