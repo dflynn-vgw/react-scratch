@@ -1,0 +1,22 @@
+header {
+  margin-bottom: 1rem;
+  border-bottom: 0.15rem dashed black;
+  font-size: 1.5rem;
+  display: list-item;
+  list-style-type: armenian;
+  text-transform: uppercase;
+  & ul {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: left;
+    padding-bottom: 1rem;
+    margin: 0;
+    list-style: none;
+    & li {
+      display: inline;
+      &:not(:last-child)::after {
+        content: ' | ';
+      }
+    }
+  }
+}

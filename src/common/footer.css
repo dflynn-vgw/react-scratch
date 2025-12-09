@@ -1,0 +1,22 @@
+footer {
+  margin-top: 1rem;
+  border-top: 0.15rem dashed black;
+  font-size: 1rem;
+  display: list-item;
+  list-style-type: none;
+  text-transform: uppercase;
+  text-align: right;
+  & ul {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    margin: 0;
+    list-style: none;
+    & li {
+      display: inline;
+      &:not(:last-child)::after {
+        content: ' | ';
+      }
+    }
+  }
+}
