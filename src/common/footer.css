@@ -1,4 +1,8 @@
 footer {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  z-index: 100;
   margin-top: 1rem;
   border-top: 0.15rem dashed black;
   font-size: 1rem;
