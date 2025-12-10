@@ -4,9 +4,13 @@ import Footer from './common/footer';
 import Header from './common/header';
 import Home from './pages/home';
 
-export default function App() {
+/**
+ * Contains the application routes without router wrapper. This allows us
+ * to test the routes without the need for a router (or use MemoryRouter in tests).
+ */
+export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       <Header
         links={[
           { text: 'Home', url: '/' },
@@ -28,6 +32,15 @@ export default function App() {
           },
         ]}
       />
+    </>
+  );
+}
+
+/** Renders the application routes with BrowserRouter for production */
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   );
 }
