@@ -10,6 +10,7 @@ A modern React project setup with TypeScript, Vite, Vitest, Tailwind CSS, ESLint
 - **React Testing Library** - Component testing utilities
 - **Tailwind CSS v4** - Utility-first CSS framework
 - **ESLint** + **Prettier** - Code quality and formatting
+- **Husky** + **lint-staged** - Git hooks for pre-commit linting
 
 ## Getting Started
 
@@ -40,10 +41,47 @@ npm run format
 
 ```
 src/
-  ├── App.tsx           # Main app component
-  ├── App.test.tsx      # Example test file
+  ├── common/           # Shared components (Header, Footer, Logo)
+  ├── pages/            # Page components (Home, About)
+  ├── App.tsx           # Main app component with routing
+  ├── App.test.tsx      # App tests
+  ├── main.tsx          # App entry point
   ├── setupTests.ts     # Test setup (jest-dom)
-  └── index.css         # Tailwind imports
+  └── index.css         # Global styles and Tailwind imports
+```
+
+## Code Quality & CI/CD
+
+### Git Hooks (Husky)
+
+This project uses **Husky** and **lint-staged** to enforce code quality before commits:
+
+- **Pre-commit hook**: Automatically runs ESLint and Prettier on staged files
+- **Prevents commits** with linting errors
+- **Auto-fixes** issues when possible
+
+The hook runs automatically when you commit. No additional setup needed!
+
+### GitHub Actions
+
+The `.github/workflows/ci.yml` workflow runs on every push and pull request:
+
+1. ✅ **ESLint** - Checks code quality
+2. ✅ **TypeScript** - Type checking
+3. ✅ **Tests** - Runs all unit tests
+4. ✅ **Build** - Ensures production build works
+
+Pull requests must pass all checks before merging.
+
+### ESLint Rules
+
+- **PascalCase filenames** - Component files must use PascalCase (e.g., `Header.tsx`, not `header.tsx`)
+- **React Hooks** - Enforces rules of hooks
+- **TypeScript** - Type-aware linting rules
+
+To check linting manually:
+```bash
+npm run lint
 ```
 
 Currently, two official plugins are available:
