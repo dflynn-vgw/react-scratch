@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-import About from './pages/about';
-import Footer from './common/footer';
-import Header from './common/header';
-import Home from './pages/home';
+import About from './pages/About';
+import Footer from './common/Footer';
+import Header from './common/Header';
+import Home from './pages/Home';
 
 /**
  * Contains only the application routes without router wrapper.
