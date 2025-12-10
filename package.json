@@ -11,7 +11,7 @@
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "preview": "vite preview",
     "test": "vitest",
-    "test:ci": "vitest run --coverage --reporter=verbose --reporter=json --outputFile=test-results.json",
+    "test:ci": "vitest run --coverage --reporter=verbose --reporter=junit --outputFile=test-results.xml",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "prepare": "husky"
