@@ -71,6 +71,10 @@ src/
   └── index.css         # Global styles and Tailwind imports
 ```
 
+## Contributing
+
+Want to contribute? Check out [CONTRIB.md](./CONTRIB.md) for development workflow, code standards, and information about our CI/CD pipelines.
+
 ## Code Quality & CI/CD
 
 ### Git Hooks (Husky)
@@ -85,6 +89,7 @@ The hook runs automatically when you commit. No additional setup needed!
 
 ### GitHub Actions
 
+#### CI Workflow
 The `.github/workflows/ci.yml` workflow runs on every push and pull request:
 
 1. ✅ **ESLint** - Checks code quality
@@ -93,6 +98,13 @@ The `.github/workflows/ci.yml` workflow runs on every push and pull request:
 4. ✅ **Build** - Ensures production build works
 
 Pull requests must pass all checks before merging.
+
+#### Deploy Workflow
+The `.github/workflows/deploy.yml` workflow automatically deploys to GitHub Pages:
+
+- **Triggers**: Runs after CI workflow succeeds on `main`/`master` (or manually via GitHub Actions UI)
+- **Deployment**: Only deploys if all CI checks pass
+- **Live Site**: https://dflynn-vgw.github.io/react-scratch/
 
 ### ESLint Rules
 
