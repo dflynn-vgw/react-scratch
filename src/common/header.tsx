@@ -1,5 +1,5 @@
 import './header.css';
-import { useLocation } from 'react-router';
+import { useLocation, Link } from 'react-router';
 import Logo from './logo';
 
 export default function Header(props: {
@@ -15,7 +15,7 @@ export default function Header(props: {
             const isActive = location.pathname === link.url;
             return (
               <li key={index} className={isActive ? 'active' : ''}>
-                <a href={link.url}>{link.text}</a>
+                <Link to={link.url}>{link.text}</Link>
               </li>
             );
           })}
