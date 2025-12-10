@@ -1,4 +1,4 @@
-import './header.css';
+import './Header.css';
 import { useLocation, Link } from 'react-router';
 import Logo from './Logo';
 
