@@ -2,6 +2,27 @@
 
 A modern React project setup with TypeScript, Vite, Vitest, Tailwind CSS, ESLint, and Prettier.
 
+## About This App
+
+This is a simple React application demonstrating modern web development practices. The app features:
+
+- 🏠 **Home Page** - Welcome page with sanitation services theme and grayscale logo
+- 📖 **About Page** - Philosophy section with responsive grid layout
+- 🧭 **Navigation** - Header with active link highlighting and sticky positioning
+- 💩 **Logo** - Grayscale emoji logo with git commit hash tooltip
+- 📱 **Responsive Design** - Mobile-friendly with CSS Grid that adapts from 3 columns to 1
+
+### Screenshots
+
+#### Home Page
+![Home Page](./docs/images/home.png)
+
+#### About Page
+![About Page](./docs/images/about.png)
+
+#### Mobile View
+![Mobile View](./docs/images/mobile.png)
+
 ## Tech Stack
 
 - **React 19** + **TypeScript** - Modern React with type safety
@@ -153,3 +174,25 @@ export default defineConfig([
   },
 ])
 ```
+
+## Documentation
+
+### Screenshots
+
+Screenshots are referenced in this README but need to be added manually. To add screenshots:
+
+1. Run the development server: `npm run dev`
+2. Capture screenshots of the Home page, About page, and mobile view
+3. Save them as `home.png`, `about.png`, and `mobile.png` in `./docs/images/`
+4. See `./docs/SCREENSHOTS.md` for detailed instructions
+
+### Features Demonstrated
+
+This app showcases:
+- **Component organization** - Modular structure with `common/` and `pages/` directories
+- **CSS organization** - Component-specific CSS files (e.g., `Header.css`, `Footer.css`)
+- **Responsive design** - CSS Grid with responsive breakpoints
+- **React Router** - Client-side routing with active link highlighting
+- **Git commit tracking** - Logo displays current git commit hash via Vite config
+- **Testing** - Component tests with React Testing Library
+- **Code quality** - ESLint rules including PascalCase filename enforcement
