@@ -23,7 +23,7 @@ export default function Header(props: {
         </ul>
       </nav>
       <span className="logo">
-        <Logo version={__GIT_HASH__} animation="wiggle" />
+        <Logo version={__GIT_HASH__} animation="all" />
       </span>
     </header>
   );

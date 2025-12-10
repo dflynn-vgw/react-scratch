@@ -1,20 +1,46 @@
 import './Logo.css';
 import { useState, useEffect } from 'react';
 
-type AnimationType = 'spin' | 'pulse' | 'bounce' | 'wiggle' | 'none';
+type AnimationType = 'spin' | 'pulse' | 'bounce' | 'wiggle';
+type AnimationProp = AnimationType | AnimationType[] | 'all' | 'none';
+
+const ALL_ANIMATIONS: AnimationType[] = ['spin', 'pulse', 'bounce', 'wiggle'];
 
 export default function Logo(props: {
   version?: string;
-  animation?: AnimationType;
+  animation?: AnimationProp;
 }) {
   const { version, animation = 'none' } = props;
+  const [currentAnimation, setCurrentAnimation] =
+    useState<AnimationType | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     if (animation === 'none') return;
 
+    // Determine available animations
+    let availableAnimations: AnimationType[];
+
+    if (animation === 'all') {
+      availableAnimations = ALL_ANIMATIONS;
+    } else if (Array.isArray(animation)) {
+      availableAnimations = animation;
+    } else {
+      availableAnimations = [animation];
+    }
+
+    // Function to get a random animation from available animations
+    const getRandomAnimation = (): AnimationType => {
+      const randomIndex = Math.floor(
+        Math.random() * availableAnimations.length
+      );
+      return availableAnimations[randomIndex];
+    };
+
     // Function to trigger animation
     const triggerAnimation = () => {
+      const nextAnimation = getRandomAnimation();
+      setCurrentAnimation(nextAnimation);
       setIsAnimating(true);
 
       // Stop animation after 2 seconds
@@ -42,7 +68,7 @@ export default function Logo(props: {
   }, [animation]);
 
   const animationClass =
-    animation !== 'none' && isAnimating ? `logo-${animation}` : '';
+    currentAnimation && isAnimating ? `logo-${currentAnimation}` : '';
 
   return (
     <span className={`logo-base ${animationClass}`} title={version}>

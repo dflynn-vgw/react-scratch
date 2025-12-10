@@ -1,6 +1,6 @@
 # Logo Component Animations
 
-The `Logo` component supports optional animations that run occasionally rather than continuously.
+The `Logo` component supports optional animations that run occasionally rather than continuously. You can specify a single animation, multiple animations, or all animations.
 
 ## Usage
 
@@ -10,8 +10,14 @@ import Logo from './common/Logo';
 // No animation (default)
 <Logo version="1.0.0" />
 
-// With animation
+// Single animation
 <Logo version="1.0.0" animation="spin" />
+
+// Multiple animations (randomly cycles through them)
+<Logo version="1.0.0" animation={['spin', 'bounce']} />
+
+// All animations (randomly cycles through all 4)
+<Logo version="1.0.0" animation="all" />
 ```
 
 ## Animation Behavior
@@ -20,6 +26,7 @@ Animations are **not continuous** - they:
 - Run for **2 seconds** when triggered
 - Trigger at **random intervals** (every 10-20 seconds)
 - Have an **initial delay** (3-8 seconds after component mounts)
+- **Randomly select** from available animations (when multiple are specified)
 - Are **subtle and non-distracting**
 
 This creates a more polished user experience compared to constantly looping animations.
@@ -57,7 +64,7 @@ Scales the logo in and out.
 ```
 
 **Properties:**
-- Duration: 2 seconds (single pulse)
+- Duration: 0.5 seconds (single pulse)
 - Scale: 1.0 → 1.2 → 1.0
 - Timing: Ease-in-out
 - Triggers: Every 10-20 seconds (randomized)
@@ -72,7 +79,7 @@ Vertical bouncing motion.
 ```
 
 **Properties:**
-- Duration: 2 seconds (multiple bounces)
+- Duration: 0.5 seconds (multiple bounces)
 - Movement: 10px vertical displacement
 - Timing: Ease-in-out
 - Triggers: Every 10-20 seconds (randomized)
@@ -97,20 +104,54 @@ Rotates back and forth (shake effect).
 ## Props Interface
 
 ```typescript
-type AnimationType = 'spin' | 'pulse' | 'bounce' | 'wiggle' | 'none';
+type AnimationType = 'spin' | 'pulse' | 'bounce' | 'wiggle';
+type AnimationProp = AnimationType | AnimationType[] | 'all' | 'none';
 
 interface LogoProps {
-  version?: string;        // Tooltip text (e.g., git commit hash)
-  animation?: AnimationType; // Animation type (default: 'none')
+  version?: string;           // Tooltip text (e.g., git commit hash)
+  animation?: AnimationProp;  // Animation type(s) (default: 'none')
 }
 ```
 
+### Animation Prop Options
+
+| Value | Description | Example |
+|-------|-------------|---------|
+| `'none'` | No animation (default) | `animation="none"` |
+| `'spin'` | Only spin animation | `animation="spin"` |
+| `'pulse'` | Only pulse animation | `animation="pulse"` |
+| `'bounce'` | Only bounce animation | `animation="bounce"` |
+| `'wiggle'` | Only wiggle animation | `animation="wiggle"` |
+| `['spin', 'bounce']` | Array of animations to cycle through | `animation={['spin', 'bounce']}` |
+| `'all'` | All 4 animations (spin, pulse, bounce, wiggle) | `animation="all"` |
+
 ## Examples
 
-### Header with Wiggle Animation
+### Single Animation
+```tsx
+// Always spins when triggered
+<Logo version={__GIT_HASH__} animation="spin" />
+```
+
+### Multiple Animations (Array)
+```tsx
+// Randomly picks spin or bounce each time
+<Logo version={__GIT_HASH__} animation={['spin', 'bounce']} />
+
+// Randomly picks from 3 animations
+<Logo animation={['spin', 'pulse', 'wiggle']} />
+```
+
+### All Animations
+```tsx
+// Randomly cycles through all 4 animations
+<Logo version={__GIT_HASH__} animation="all" />
+```
+
+### Header with All Animations (Current Setup)
 ```tsx
 <Header>
-  <Logo version={__GIT_HASH__} animation="wiggle" />
+  <Logo version={__GIT_HASH__} animation="all" />
 </Header>
 ```
 
@@ -119,9 +160,9 @@ interface LogoProps {
 {isLoading && <Logo animation="spin" />}
 ```
 
-### Success Notification
+### Success Notification (Bounce or Pulse)
 ```tsx
-{showSuccess && <Logo animation="bounce" />}
+{showSuccess && <Logo animation={['bounce', 'pulse']} />}
 ```
 
 ### Static Branding
@@ -146,12 +187,20 @@ interface LogoProps {
 - All animations run for exactly **2 seconds**
 - Then stop until the next trigger
 
+### Animation Selection
+When multiple animations are specified:
+- **Random selection** on each trigger
+- Equal probability for all available animations
+- Each animation is independently chosen
+
 ### Implementation
 The component uses React `useState` and `useEffect` to:
-1. Randomly schedule animation triggers
-2. Apply the animation class for 2 seconds
-3. Remove the class after animation completes
-4. Schedule the next animation
+1. Determine available animations (single, array, or 'all')
+2. Randomly schedule animation triggers
+3. Randomly select one animation from available options
+4. Apply the animation class for 2 seconds
+5. Remove the class after animation completes
+6. Schedule the next animation with a new random selection
 
 ## Customization
 
@@ -228,5 +277,39 @@ CSS animations are supported in all modern browsers:
 ## Related Files
 
 - Component: `src/common/Logo.tsx`
-- Styles: `src/common/logo.css`
+- Styles: `src/common/Logo.css`
 - Type definitions: Inline in `Logo.tsx`
+
+## Random Cycling Behavior
+
+### How It Works
+
+When you specify multiple animations, the Logo component:
+
+1. **Builds an array** of available animations:
+   - `'all'` → `['spin', 'pulse', 'bounce', 'wiggle']`
+   - `['spin', 'bounce']` → `['spin', 'bounce']`
+   - `'wiggle'` → `['wiggle']`
+
+2. **On each trigger**, randomly selects one animation:
+   ```tsx
+   const randomIndex = Math.floor(Math.random() * availableAnimations.length);
+   const nextAnimation = availableAnimations[randomIndex];
+   ```
+
+3. **Applies the selected animation** for 2 seconds
+
+4. **Repeats** the process on the next trigger (10-20 seconds later)
+
+### Example Timeline
+
+With `animation="all"`:
+```
+Time:  0s ---- 5s ---- 7s ---- 9s ---- 22s --- 24s --- 38s --- 40s
+       |       |       |       |        |      |       |      |
+      Mount  Delay   SPIN    Stop    BOUNCE  Stop   WIGGLE  Stop
+                    (2s)            (2s)            (2s)
+```
+
+Each animation is randomly chosen, so you might see:
+- Spin → Pulse → Bounce → Spin → Wiggle → Pulse → ...

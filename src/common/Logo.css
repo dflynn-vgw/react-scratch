@@ -4,9 +4,9 @@
   filter: grayscale(100%);
 }
 
-/* Spin animation - runs once for 2 seconds */
+/* Spin animation */
 .logo-spin {
-  animation: logo-spin 2s linear 1;
+  animation: logo-spin 0.5s linear 1;
 }
 
 @keyframes logo-spin {
@@ -18,9 +18,9 @@
   }
 }
 
-/* Pulse animation - runs once for 2 seconds */
+/* Pulse animation */
 .logo-pulse {
-  animation: logo-pulse 2s ease-in-out 1;
+  animation: logo-pulse 0.5s ease-in-out 1;
 }
 
 @keyframes logo-pulse {
@@ -33,9 +33,9 @@
   }
 }
 
-/* Bounce animation - runs for 2 seconds */
+/* Bounce animation */
 .logo-bounce {
-  animation: logo-bounce 2s ease-in-out 1;
+  animation: logo-bounce 0.5s ease-in-out 1;
 }
 
 @keyframes logo-bounce {
@@ -48,9 +48,9 @@
   }
 }
 
-/* Wiggle animation - runs for 2 seconds */
+/* Wiggle animation */
 .logo-wiggle {
-  animation: logo-wiggle 2s ease-in-out 1;
+  animation: logo-wiggle 0.5s ease-in-out 1;
 }
 
 @keyframes logo-wiggle {
