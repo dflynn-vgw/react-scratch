@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "check": "tsc -b --noEmit",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "preview": "vite preview",
     "test": "vitest",
+    "test:ci": "vitest run --coverage --reporter=verbose --reporter=json --outputFile=test-results.json",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "prepare": "husky"
