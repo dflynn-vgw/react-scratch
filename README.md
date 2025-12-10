@@ -58,6 +58,34 @@ npm run lint
 npm run format
 ```
 
+## Deployment Configuration
+
+This app is configured to be deployed to a subdirectory (e.g., GitHub Pages):
+
+- **Base path**: `/react-scratch/` (configured in `vite.config.ts`)
+- **React Router**: Automatically uses the base path via `import.meta.env.BASE_URL`
+
+### Changing the Base Path
+
+To deploy to a different path or root directory:
+
+1. Update `base` in `vite.config.ts`:
+   ```js
+   export default defineConfig({
+     base: '/your-path/',  // or '/' for root
+     // ...
+   });
+   ```
+
+2. React Router will automatically pick up the change (no code changes needed)
+
+### Local Development
+
+During development (`npm run dev`), the app runs at:
+- `http://localhost:5173/react-scratch/`
+
+Navigation links work correctly with the base path configured.
+
 ## Project Structure
 
 ```

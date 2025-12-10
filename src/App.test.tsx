@@ -60,4 +60,15 @@ describe('AppRoutes', () => {
       screen.getByRole('heading', { name: /philosophy/i })
     ).toBeInTheDocument();
   });
+
+  it('redirects unknown routes to Home page', () => {
+    renderWithRouter('/unknown-route');
+
+    expect(
+      screen.getByRole('heading', { name: /it's a shit/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: /sanitation services/i })
+    ).toBeInTheDocument();
+  });
 });
