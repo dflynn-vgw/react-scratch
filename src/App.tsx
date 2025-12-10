@@ -5,12 +5,22 @@ import Header from './common/header';
 import Home from './pages/home';
 
 /**
- * Contains the application routes without router wrapper. This allows us
- * to test the routes without the need for a router (or use MemoryRouter in tests).
+ * Contains only the application routes without router wrapper.
+ * This allows testing routes with MemoryRouter in tests.
  */
 export function AppRoutes() {
   return (
-    <>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
+  );
+}
+
+/** Renders the full application with BrowserRouter for production */
+export default function App() {
+  return (
+    <BrowserRouter>
       <Header
         links={[
           { text: 'Home', url: '/' },
@@ -18,10 +28,7 @@ export function AppRoutes() {
         ]}
       />
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <AppRoutes />
       </main>
       <Footer
         copyright="flydav"
@@ -32,15 +39,6 @@ export function AppRoutes() {
           },
         ]}
       />
-    </>
-  );
-}
-
-/** Renders the application routes with BrowserRouter for production */
-export default function App() {
-  return (
-    <BrowserRouter>
-      <AppRoutes />
     </BrowserRouter>
   );
 }
