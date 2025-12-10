@@ -9,7 +9,7 @@ This is a simple React application demonstrating modern web development practice
 - 🏠 **Home Page** - Welcome page with sanitation services theme and grayscale logo
 - 📖 **About Page** - Philosophy section with responsive grid layout
 - 🧭 **Navigation** - Header with active link highlighting and sticky positioning
-- 💩 **Logo** - Grayscale emoji logo with git commit hash tooltip
+- 💩 **Logo** - Grayscale emoji logo with git commit hash tooltip and optional animations (spin, pulse, bounce, wiggle)
 - 📱 **Responsive Design** - Mobile-friendly with CSS Grid that adapts from 3 columns to 1
 
 ### Screenshots
@@ -231,6 +231,7 @@ Screenshots are referenced in this README but need to be added manually. To add 
 This app showcases:
 - **Component organization** - Modular structure with `common/` and `pages/` directories
 - **CSS organization** - Component-specific CSS files (e.g., `Header.css`, `Footer.css`)
+- **CSS animations** - Logo component with optional animations (see `docs/LOGO_ANIMATIONS.md`)
 - **Responsive design** - CSS Grid with responsive breakpoints
 - **React Router** - Client-side routing with active link highlighting
 - **Git commit tracking** - Logo displays current git commit hash via Vite config

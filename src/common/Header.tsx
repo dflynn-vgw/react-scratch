@@ -1,4 +1,4 @@
-import './Header.css';
+import './header.css';
 import { useLocation, Link } from 'react-router';
 import Logo from './Logo';
 
@@ -23,7 +23,7 @@ export default function Header(props: {
         </ul>
       </nav>
       <span className="logo">
-        <Logo version={__GIT_HASH__} />
+        <Logo version={__GIT_HASH__} animation="wiggle" />
       </span>
     </header>
   );

@@ -10,6 +10,7 @@ docs/
 │   ├── home.png     # Home page screenshot
 │   ├── about.png    # About page screenshot
 │   └── mobile.png   # Mobile responsive view
+├── LOGO_ANIMATIONS.md # Logo component animation documentation
 ├── SCREENSHOTS.md   # Guide for capturing and adding screenshots
 └── README.md        # This file
 ```
@@ -32,13 +33,14 @@ The `images/` directory contains screenshots used in the main README.md file. Th
 
 ## Additional Documentation
 
-As the project grows, you can add more documentation here:
+Additional documentation:
 
-- API documentation
-- Architecture decisions
-- Design system documentation
-- Deployment guides
-- Contributing guidelines
+- **Logo Animations** - See [LOGO_ANIMATIONS.md](./LOGO_ANIMATIONS.md) for animation options
+- API documentation (as needed)
+- Architecture decisions (as needed)
+- Design system documentation (as needed)
+- Deployment guides (as needed)
+- Contributing guidelines (as needed)
 
 ## Updating Documentation
 
@@ -51,4 +53,5 @@ When adding new features to the app:
 ## Resources
 
 - Main project: [README.md](../README.md)
+- Logo animations: [LOGO_ANIMATIONS.md](./LOGO_ANIMATIONS.md)
 - Screenshot guide: [SCREENSHOTS.md](./SCREENSHOTS.md)

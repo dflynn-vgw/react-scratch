@@ -1,0 +1,82 @@
+/* Base logo styles */
+.logo-base {
+  display: inline-block;
+  filter: grayscale(100%);
+}
+
+/* Spin animation - runs once for 2 seconds */
+.logo-spin {
+  animation: logo-spin 2s linear 1;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulse animation - runs once for 2 seconds */
+.logo-pulse {
+  animation: logo-pulse 2s ease-in-out 1;
+}
+
+@keyframes logo-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Bounce animation - runs for 2 seconds */
+.logo-bounce {
+  animation: logo-bounce 2s ease-in-out 1;
+}
+
+@keyframes logo-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Wiggle animation - runs for 2 seconds */
+.logo-wiggle {
+  animation: logo-wiggle 2s ease-in-out 1;
+}
+
+@keyframes logo-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: rotate(-10deg);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+
+/* Hover effects - pause animation on hover */
+.logo-spin:hover,
+.logo-pulse:hover,
+.logo-bounce:hover,
+.logo-wiggle:hover {
+  animation-play-state: paused;
+}
