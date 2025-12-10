@@ -8,6 +8,7 @@ const gitHash = execSync('git rev-parse --short HEAD').toString().trim();
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: '/react-scratch/',
   define: {
     __GIT_HASH__: JSON.stringify(gitHash),
   },
