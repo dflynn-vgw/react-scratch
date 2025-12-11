@@ -3,5 +3,5 @@ import './Content.css';
 
 /** Content container, with styles and layout */
 export default function Content(props: { children: React.ReactNode }) {
-  return <main classname="content">{props.children}</main>;
+  return <main className="content">{props.children}</main>;
 }
