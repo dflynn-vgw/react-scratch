@@ -8,7 +8,7 @@ import prettierConfig from 'eslint-config-prettier';
 import unicorn from 'eslint-plugin-unicorn';
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['coverage', 'dist']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
