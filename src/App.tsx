@@ -4,6 +4,7 @@ import Footer from './common/Footer';
 import Header from './common/Header';
 import Home from './pages/Home';
 import Content from './common/Content';
+import Shop from './pages/Shop';
 
 /**
  * Contains only the application routes without router wrapper.
@@ -13,6 +14,7 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/shop" element={<Shop />} />
       <Route path="/about" element={<About />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
@@ -28,6 +30,7 @@ export default function App() {
       <Header
         links={[
           { text: 'Home', url: '/' },
+          { text: 'Shop', url: '/shop' },
           { text: 'About', url: '/about' },
         ]}
       />
