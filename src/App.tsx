@@ -3,6 +3,7 @@ import About from './pages/About';
 import Footer from './common/Footer';
 import Header from './common/Header';
 import Home from './pages/Home';
+import Content from './common/Content';
 
 /**
  * Contains only the application routes without router wrapper.
@@ -30,9 +31,9 @@ export default function App() {
           { text: 'About', url: '/about' },
         ]}
       />
-      <main>
+      <Content>
         <AppRoutes />
-      </main>
+      </Content>
       <Footer
         copyright="flydav"
         links={[
