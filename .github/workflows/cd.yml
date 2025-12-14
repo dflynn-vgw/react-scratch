@@ -1,7 +1,7 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Trigger deployment on successful CI workflow run or manual dispatch
+  # Trigger deployment on successful CI workflow run
   workflow_run:
     workflows: ['CI']
     types:
@@ -11,12 +11,6 @@ on:
 
   # Trigger deployment manually from GH Actions tab (run workflow)
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - 'docs/**'
-      - '*.md'
 
 permissions:
   contents: read
