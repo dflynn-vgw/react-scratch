@@ -1,14 +1,19 @@
 name: Deploy to GitHub Pages
 
 on:
+  # Trigger deployment on successful CI workflow run or manual dispatch
   workflow_run:
-    workflows: ["CI"]
+    workflows: ['CI']
     types:
       - completed
-    branches: [main, master]
+    branches:
+      - main
+
+  # Trigger deployment manually from GH Actions tab (run workflow)
   workflow_dispatch:
   push:
-    branches: [main, master]
+    branches:
+      - main
     paths-ignore:
       - 'docs/**'
       - '*.md'
@@ -19,7 +24,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: false
 
 jobs:
